@@ -1,1 +1,8 @@
-<h1>funcionou</h1>
+<h1>{{titles}}</h1>
+<button (click)="alteraTexto()">Alterar</button>
+<ul>
+  <li *ngFor="let todo of todos">
+    {{todo.id}}. {{todo.titles}}
+    <button *ngIf="todo.done">Concluir</button> |
+    <button>Remover</button></li>
+</ul>
