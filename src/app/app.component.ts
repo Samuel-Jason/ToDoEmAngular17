@@ -18,6 +18,7 @@ import {
   schemas: [NO_ERRORS_SCHEMA],
 })
 export class AppComponent {
+  public mode: string = 'list';
   public todos: Todo[] = [];
   public menutitles: String = 'Minhas tarefas';
   public form: FormGroup;
@@ -68,6 +69,7 @@ export class AppComponent {
   save() {
     const data = JSON.stringify(this.todos);
     localStorage.setItem('todos', data);
+    this.mode = 'list';
   }
 
   load() {
@@ -79,4 +81,7 @@ export class AppComponent {
       console.log('Não há dados salvos para "todos" no localStorage.');
     }
   }
+
+  changeMode(mode: string) {
+    this.mode = mode;  }
 }

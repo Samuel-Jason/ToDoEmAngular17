@@ -58,11 +58,28 @@ li > button:hover {
 .button {
   background-color: #000;
   border: none;
-  padding: 20px;
+  padding: 10px 20px; /* Ajustado o padding para ser mais compacto */
   color: #fff;
-  border-radius: 30px;
+  border-radius: 20px; /* Ajustado o border-radius para ser mais arredondado */
   font-size: 1em;
-  font-weight: 100;
-  padding-left: 50px;
-  padding-right: 50px;
+  cursor: pointer; /* Adicionado cursor pointer para indicar que é clicável */
 }
+
+#modal {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  list-style: none;
+  background: #FFF;
+  border-radius: 10px;
+  box-shadow: 3px 4px 14px 0px rgba(0, 0, 0, 0.39);
+}
+
+input[type="text"] {
+  padding: 10px; /* Espaçamento interno */
+  font-size: 1em; /* Tamanho da fonte */
+  border: 2px solid #000; /* Borda sólida preta */
+  border-radius: 5px; /* Arredondamento da borda */
+  transition: border-color 0.3s ease-in-out; /* Transição suave na cor da borda */
+  }
+

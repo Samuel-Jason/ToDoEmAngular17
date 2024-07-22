@@ -1,24 +1,35 @@
-<h1 >{{ menutitles }}</h1>
-<ul>
-  <p *ngIf="todos.length==0"><small>Não tem nenhuma tarefa hoje!</small></p>
+<h1 class="title animated jackInTheBox">{{ menutitles }}</h1>
+<ul class="animated flipInX" *ngIf="mode == 'list'">
+  <p class="text-center" *ngIf="todos.length == 0"><small>Não tem nenhuma tarefa hoje!</small></p>
   <li *ngFor="let todo of todos">
-      {{ todo.title }}
-    <button *ngIf="!todo.done" (click)="markAsDone(todo)">Concluir</button>
-    <button *ngIf="todo.done" (click)="markAsUndone(todo)">Refazer</button> |
+    {{ todo.title }}
     <button (click)="remove(todo)">Remover</button>
+    <button *ngIf="!todo.done" (click)="markAsDone(todo)">Concluir</button>
+
+    <button *ngIf="todo.done" (click)="markAsUndone(todo)">Refazer</button> |
   </li>
 </ul>
 
-<form [formGroup]="form">
-  <fieldset>
-    <label>Tarefa: </label>
-    <input
-      type="text"
-      placeholder="Titulo da tarefa"
-      minlength="6"
-      maxlength="60"
-      formControlName="title"
-    />
-    <button class="button" (click)="add()">Salvar</button>
-  </fieldset>
-</form>
+<div id="modal" *ngIf="mode == 'add'" class="animated flipInX">
+  <form [formGroup]="form">
+    <fieldset>
+      <label>Tarefa: </label>
+      <input
+        type="text"
+        placeholder="Titulo da tarefa"
+        minlength="6"
+        maxlength="60"
+        formControlName="title"
+      />
+      <button class="button" (click)="add()">Salvar</button>
+    </fieldset>
+  </form>
+</div>
+
+<button class="btn btn-primary" (click)="changeMode('add')" *ngIf="mode == 'list'">
+  <i class="fas fa-plus-circle"></i> Nova Tarefa
+</button>
+
+<button class="btn btn-danger" (click)="changeMode('list')" *ngIf="mode == 'add'">
+  <i class="fas fa-times"></i> Cancelar
+</button>
